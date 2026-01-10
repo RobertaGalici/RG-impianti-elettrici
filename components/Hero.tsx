@@ -15,23 +15,24 @@ export function Hero() {
   };
   return <section id="home" className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-gray-900">
 
+
       {/* Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
-  <div className="relative h-full w-full">
-    <Image
-      src={homeImg}
-      alt="Cavi elettrici e cablaggio"
-      fill
-      priority
-      sizes="100vw"
-      className="object-cover object-center"
-    />
-    <div className="absolute inset-0 bg-gray-900/70" />
-  </div>
-</div>
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src={homeImg}
+            alt="Cavi elettrici e cablaggio"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gray-900/70" />
+        </div>
+
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20 sm:pt-24">
+
         {/* logo removed from Hero; kept only in Navbar */}
         <motion.div initial={{
         opacity: 0,
