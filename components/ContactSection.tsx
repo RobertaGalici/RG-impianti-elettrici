@@ -12,24 +12,33 @@ export function ContactSection() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
   setIsSubmitting(true);
   setIsSuccess(false);
-
+  setErrorMsg(null);
   try {
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: formState.name,
-        email: formState.email,
-        phone: formState.phone,
-        message: formState.message,
-      }),
-    });
+    const res = await fetch("https://www.robertogaliciimpiantielettrici.it/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name: formState.name,
+      email: formState.email,
+      phone: formState.phone,
+      message: formState.message,
+    }),
+});
 
-    if (!res.ok) throw new Error("Invio fallito");
+    const data = await res.json().catch(() => ({}));
+
+    if (!res.ok) {
+      throw new Error(data?.error || "Invio fallito");
+    }
+
+    if (data?.ok !== true) {
+      throw new Error(data?.error || "Invio fallito");
+    }
 
     setIsSuccess(true);
     setFormState({
@@ -42,7 +51,7 @@ export function ContactSection() {
 
     setTimeout(() => setIsSuccess(false), 5000);
   } catch (err) {
-    alert("Errore durante l'invio. Puoi scriverci via WhatsApp o email.");
+    setErrorMsg(err instanceof Error ? err.message : "Errore durante l'invio. Puoi scriverci via WhatsApp o email.");
   } finally {
     setIsSubmitting(false);
   }
@@ -189,7 +198,11 @@ target="_blank" rel="noopener noreferrer" className="inline-flex items-center ju
                     </p>
                   </div>
                 </div>
-
+                {errorMsg && (
+                <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-md p-3">
+                  {errorMsg}
+                </p>
+                )}
                 <button type="submit" disabled={isSubmitting} className="w-full flex justify-center py-4 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-70 disabled:cursor-not-allowed transition-colors">
                   {isSubmitting ? 'Invio in corso...' : 'Invia richiesta'}
                 </button>

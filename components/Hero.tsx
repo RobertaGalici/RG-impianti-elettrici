@@ -15,9 +15,8 @@ export function Hero() {
   };
   return <section id="home" className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-gray-900">
 
-
       {/* Background Image with Overlay */}
-        <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 -z-0">
           <Image
             src={homeImg}
             alt="Cavi elettrici e cablaggio"
