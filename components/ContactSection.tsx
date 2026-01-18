@@ -19,7 +19,7 @@ export function ContactSection() {
   setIsSuccess(false);
   setErrorMsg(null);
   try {
-    const res = await fetch("https://www.robertogaliciimpiantielettrici.it/api/contact", {
+    const res = await fetch("/api/contact", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
