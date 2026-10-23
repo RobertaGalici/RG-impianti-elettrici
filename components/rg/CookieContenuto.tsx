@@ -17,10 +17,9 @@ export function CookieContenuto() {
         e non prevedono area riservata né carrello.</p>
 
         <h2>Servizi di terze parti</h2>
-        <p>All’apertura delle pagine il browser richiede i caratteri tipografici ai server di
-        Google Fonts (Google Ireland Ltd.). Non è un cookie, ma è comunque un collegamento a un
-        fornitore esterno che in quel momento vede il tuo indirizzo IP. Ne parliamo nella
-        <a href="/privacy/">informativa privacy</a>.</p>
+        <p>Le pagine non caricano nulla da fornitori esterni: i caratteri tipografici sono
+        serviti dal nostro stesso sito. Restano soltanto l’hosting e il servizio che recapita i
+        moduli, descritti nella <a href="/privacy/">informativa privacy</a>.</p>
         {/* Da completare prima della pubblicazione: Se in futuro si aggiungono Google Analytics, il pixel di Meta, una mappa Google incorporata o video YouTube, questa pagina va riscritta e va attivato il banner di consenso già predisposto nel codice: in `assets/js/main.js` basta mettere a `true` la costante `STRUMENTI_NON_ESSENZIALI`. Il pulsante «Rifiuta» deve restare identico per dimensione ed evidenza ad «Accetta». */}
 
         <h2>Come gestire i cookie dal browser</h2>

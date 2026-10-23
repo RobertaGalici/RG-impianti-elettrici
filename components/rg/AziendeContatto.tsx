@@ -60,6 +60,11 @@ export function AziendeContatto() {
                   <label htmlFor="a-msg">Racconta la situazione <span className="form-opz">facoltativo</span></label>
                   <textarea id="a-msg" name="messaggio" placeholder="Es. capannone di 600 mq, quadro generale da rifare senza fermare la produzione"></textarea>
                 </div>
+                {/* Campo esca per i robot: chi compila il modulo non lo vede. */}
+                <div className="campo-esca" aria-hidden="true">
+                  <label htmlFor="a-sito">Sito</label>
+                  <input type="text" id="a-sito" name="sito" tabIndex={-1} autoComplete="off" />
+                </div>
                 <div className="field field--check">
                   <input type="checkbox" id="a-privacy" name="privacy" required={true} />
                   <label htmlFor="a-privacy">Ho letto l&rsquo;<a href="/privacy/">informativa privacy</a> e acconsento al trattamento dei miei dati per essere ricontattato su questa richiesta. <span className="req">*</span></label>
@@ -68,6 +73,7 @@ export function AziendeContatto() {
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                 </button>
                 <p className="form-note">Risponde direttamente uno dei due titolari. I dati servono solo a risponderti.</p>
+                <p className="form-errore" role="alert" tabIndex={-1} hidden={true}>Non siamo riusciti a inviare la richiesta. Chiamaci al <a href="tel:+393389723178">338 9723178</a> oppure scrivici su <a href="https://wa.me/393389723178" rel="noopener">WhatsApp</a>.</p>
               </div>
               <div className="form-success" role="status">
                 <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>

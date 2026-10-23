@@ -2969,3 +2969,25 @@ body.nav-open::before {
    quando la testata è su un hero scuro, se no sparisce. */
 body.nav-open .nav-toggle span::before,
 body.nav-open .nav-toggle span::after { background: var(--ink); }
+
+/* =====================================================================
+   STRATO 27 — IL MODULO CHE SPEDISCE DAVVERO
+   Tre cose che prima non servivano, quando l'invio era simulato: il
+   campo esca per i robot (deve restare raggiungibile dal codice ma
+   invisibile e fuori dal percorso di chi usa la tastiera), il bottone
+   mentre la richiesta è in viaggio, e il messaggio se non è partita.
+   ===================================================================== */
+.campo-esca {
+  position: absolute; left: -9999px; top: auto;
+  width: 1px; height: 1px; overflow: hidden;
+}
+
+.lead-form.is-invio button[type="submit"] { opacity: .6; cursor: progress; }
+
+.form-errore {
+  margin-top: 1rem; padding: .9rem 1.1rem;
+  border: 1px solid var(--accent); border-radius: var(--radius);
+  font-size: var(--t-small); color: var(--ink-soft);
+}
+.form-errore a { color: var(--accent); text-decoration: underline; }
+.form-errore:focus { outline: 2px solid var(--accent); outline-offset: 3px; }

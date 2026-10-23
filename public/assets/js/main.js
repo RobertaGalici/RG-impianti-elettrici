@@ -99,15 +99,39 @@
     window.addEventListener('resize', check);
   }
 
-  /* ---- Form: invio simulato (da collegare a backend / servizio email) ---- */
+  /* ---- Form: la richiesta va a /api/contact, che la gira per email ---- */
   document.querySelectorAll('.lead-form').forEach(function (form) {
     form.addEventListener('submit', function (ev) {
       ev.preventDefault();
       if (!form.checkValidity()) { form.reportValidity(); return; }
-      /* TODO backend: sostituire con fetch() verso endpoint reale o servizio (Formspree, ecc.) */
-      form.classList.add('is-sent');
-      var ok = form.querySelector('.form-success');
-      if (ok) { ok.setAttribute('tabindex', '-1'); ok.focus(); }
+
+      var bottone = form.querySelector('button[type="submit"]');
+      var errore = form.querySelector('.form-errore');
+      var dati = {};
+      new FormData(form).forEach(function (valore, nome) { dati[nome] = valore; });
+      /* la spunta del consenso arriva come "on": meglio un sì o un no */
+      dati.privacy = !!form.querySelector('[name="privacy"]:checked');
+
+      if (errore) errore.hidden = true;
+      form.classList.add('is-invio');
+      if (bottone) bottone.disabled = true;
+
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dati)
+      }).then(function (risposta) {
+        if (!risposta.ok) throw new Error('risposta ' + risposta.status);
+        /* la conferma si vede solo se la mail è partita davvero */
+        form.classList.add('is-sent');
+        var ok = form.querySelector('.form-success');
+        if (ok) { ok.setAttribute('tabindex', '-1'); ok.focus(); }
+      }).catch(function () {
+        if (errore) { errore.hidden = false; errore.focus(); }
+      }).then(function () {
+        form.classList.remove('is-invio');
+        if (bottone) bottone.disabled = false;
+      });
     });
   });
 

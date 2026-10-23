@@ -21,6 +21,7 @@ export function PrivacyContenuto() {
         <ul>
           <li>nome e cognome;</li>
           <li>numero di telefono;</li>
+          <li>indirizzo email;</li>
           <li>nome dell’azienda o dell’ente e ruolo, solo nel modulo dedicato ad aziende ed enti;</li>
           <li>tipo di intervento richiesto e l’eventuale descrizione che scrivi tu nel campo libero.</li>
         </ul>
@@ -45,14 +46,17 @@ export function PrivacyContenuto() {
         <p>I dati possono essere trattati, per nostro conto e come responsabili del trattamento,
         dai fornitori tecnici necessari a far funzionare il sito e la posta:</p>
         <ul>
-          <li><strong>Fornitore di hosting</strong> del sito e delle caselle email;</li>
-          <li><strong>Servizio di invio dei moduli</strong>, che recapita il contenuto del form
-          alla nostra casella;</li>
-          <li><strong>Google Ireland Ltd.</strong>, per il caricamento dei caratteri tipografici
-          (Google Fonts): all’apertura della pagina il tuo browser richiede i font ai server di
-          Google, che in quel momento vedono il tuo indirizzo IP.</li>
+          <li><strong>Vercel Inc.</strong>, che ospita il sito: nei suoi log di sistema restano i
+          dati tecnici di navigazione descritti al punto 2;</li>
+          <li><strong>Resend</strong> (Plus Five Five, Inc.), che recapita alla nostra casella il
+          contenuto dei moduli.</li>
         </ul>
-        {/* Da completare prima della pubblicazione: Indicare per nome hosting e servizio di invio dei moduli una volta scelti (es. Hostinger e il provider del form), e firmare con ciascuno un accordo sul trattamento dei dati (DPA). Se si preferisce evitare del tutto il passaggio a Google, i font vanno caricati dal nostro stesso server. */}
+        <p>Entrambi hanno sede negli Stati Uniti: il trasferimento avviene sulla base delle
+        clausole contrattuali standard approvate dalla Commissione europea e, dove applicabile,
+        dell’EU-US Data Privacy Framework.</p>
+        <p>I caratteri tipografici sono serviti dal nostro stesso sito: aprendo le pagine il tuo
+        browser non contatta server di terzi.</p>
+        {/* Da completare prima della pubblicazione: firmare con Vercel e con Resend un accordo sul trattamento dei dati (DPA). Entrambi lo mettono a disposizione dal proprio pannello. */}
 
         <h2>5. Per quanto tempo li conserviamo</h2>
         <p>Le richieste di preventivo restano archiviate per il tempo necessario a gestire il
